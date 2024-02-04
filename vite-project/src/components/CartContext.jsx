@@ -4,6 +4,7 @@ export const Cart = createContext();
 
 const INITIAL_AVAILABLE = [
   {
+    id: Math.random(),
     name: "Dolo",
     description: "Fever",
     price: "100",

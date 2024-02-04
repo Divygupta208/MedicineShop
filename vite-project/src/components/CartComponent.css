@@ -1,0 +1,11 @@
+.cart-main {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  border-radius: 20px;
+  z-index: 20;
+  
+  background-color: #fff;
+  width: 50vw;
+  height: 30vh;
+}

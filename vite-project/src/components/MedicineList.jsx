@@ -1,22 +1,24 @@
 import React, { useContext } from "react";
 import "./MedicineList.css";
-import CartContext, { Cart } from "./CartContext";
+import { Cart } from "./CartContext";
+import SingleProduct from "./SingleProduct";
 
 const MedicineList = () => {
-  const { availableMed } = useContext(Cart);
+  const { availableMed, cart, setCart } = useContext(Cart);
+
+  const addToCartHandler = (item) => {
+    setCart([...cart, item]);
+  };
+
   return (
     <div className="medicine-list">
-      <ul>
+      <ul className="main-list">
         {availableMed.map((med) => (
-          <li className="product-list">
-            <div>
-              {med.name}-{med.description}-{med.price}
-            </div>
-            <div>
-              {med.quantity}
-              <button>Add To Cart</button>
-            </div>
-          </li>
+          <SingleProduct
+            med={med}
+            key={med.id}
+            addToCartHandler={addToCartHandler}
+          />
         ))}
       </ul>
     </div>

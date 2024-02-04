@@ -8,7 +8,7 @@ const Header = (props) => {
   const priceRef = useRef();
   const quantityRef = useRef();
 
-  const { setAvailableMed } = useContext(Cart);
+  const { setAvailableMed, cart } = useContext(Cart);
 
   const addMedicineHandler = (event) => {
     event.preventDefault();
@@ -17,6 +17,7 @@ const Header = (props) => {
       return [
         ...previous,
         {
+          id: Math.floor(Math.random() * 100) + 1,
           name: nameRef.current.value,
           description: descriptionRef.current.value,
           price: priceRef.current.value,
@@ -24,6 +25,11 @@ const Header = (props) => {
         },
       ];
     });
+
+    nameRef.current.value = "";
+    descriptionRef.current.value = "";
+    priceRef.current.value = "";
+    quantityRef.current.value = "";
   };
 
   return (
@@ -37,9 +43,9 @@ const Header = (props) => {
         <input ref={priceRef} type="number" id="price" />
         <label htmlFor="quantity">Qantity</label>
         <input ref={quantityRef} type="number" id="quantity" />
-
         <button>Add Item</button>
       </form>
+      <button onClick={props.setShowCart}>Cart-{cart.length}</button>
     </div>
   );
 };
