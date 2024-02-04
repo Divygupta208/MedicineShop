@@ -1,0 +1,16 @@
+.medicine-list {
+  background-color: #a4a4a4;
+  width: 80%;
+  border-radius: 20px;
+
+  height: 60vh;
+  overflow: scroll;
+  margin-left: 10vw;
+  margin-top: 2vh;
+}
+
+.product-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
