@@ -32,6 +32,11 @@ const Header = (props) => {
     quantityRef.current.value = "";
   };
 
+  const totalQuantity = cart.reduce(
+    (total, item) => total + parseInt(item.quantity, 10),
+    0
+  );
+
   return (
     <div className="main-header">
       <form className="form" onSubmit={addMedicineHandler}>
@@ -45,7 +50,7 @@ const Header = (props) => {
         <input ref={quantityRef} type="number" id="quantity" />
         <button>Add Item</button>
       </form>
-      <button onClick={props.setShowCart}>Cart-{cart.length}</button>
+      <button onClick={props.setShowCart}>Cart-{totalQuantity}</button>
     </div>
   );
 };

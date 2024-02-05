@@ -1,0 +1,80 @@
+/* SingleProduct.css */
+
+.product-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.product-description {
+  color: #555;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+}
+
+.product-price {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #007bff;
+  margin-left: 10px; /* Adjust margin as needed */
+}
+
+.product-quantity {
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #333;
+  margin-left: 10px; /* Adjust margin as needed */
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.product-actions button {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-actions button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.product-actions button:hover {
+  background-color: #218838;
+}
+
+/* Additional styles for "Out Of Stock" message */
+.out-of-stock-message {
+  font-size: 1.1em;
+  color: #030303;
+  font-weight: bold;
+}

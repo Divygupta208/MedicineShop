@@ -14,7 +14,7 @@ function App() {
     <>
       <Header setShowCart={cartVisible} />
       <MedicineList />
-      {showCart && <CartComponent />}
+      {showCart && <CartComponent setShowCart={cartVisible} />}
     </>
   );
 }
