@@ -4,30 +4,23 @@ import "./SingleProduct.css";
 const SingleProduct = ({ med, addToCartHandler }) => {
   const { availableMed, setAvailableMed, cart, setCart } = useContext(Cart);
 
-  const addToCart = () => {
-    const item = {
-      id: med.id,
-      name: med.name,
-      description: med.description,
-      price: med.price,
-      quantity: med.quantity,
-    };
+  const addToCart = async () => {
+    const itemId = med._id;
+    const response = await fetch(
+      `https://crudcrud.com/api/bb155f8b34114078adecbf63807b4f50/medicines/${itemId}`
+    );
 
-    addToCartHandler({
-      id: med.id,
-      name: med.name,
-      description: med.description,
-      price: med.price,
-      quantity: 1,
-    });
+    const data = await response.json();
+
+    addToCartHandler(data);
 
     const newMed = availableMed.map((meds) => {
-      if (meds.id === item.id) {
+      if (meds._id === itemId) {
         meds.quantity = meds.quantity - 1;
       }
 
       return {
-        id: meds.id,
+        _id: meds._id,
         name: meds.name,
         description: meds.description,
         price: meds.price,
@@ -38,6 +31,28 @@ const SingleProduct = ({ med, addToCartHandler }) => {
     const updatedMed = [...newMed];
 
     setAvailableMed(updatedMed);
+
+    updateAvailableMed(data);
+  };
+
+  const updateAvailableMed = async (item) => {
+    const id = item._id;
+
+    const updatedMed = {
+      name: item.name,
+      description: item.description,
+      price: item.price,
+      quantity: item.quantity - 1,
+    };
+
+    const response = await fetch(
+      `https://crudcrud.com/api/bb155f8b34114078adecbf63807b4f50/medicines/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(updatedMed),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   };
 
   return (

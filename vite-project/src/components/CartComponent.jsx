@@ -16,7 +16,7 @@ const CartComponent = (props) => {
       <div className="cart-main">
         <div>
           {cart.map((med) => (
-            <CartProduct med={med} key={med.id} />
+            <CartProduct med={med} key={med._id} />
           ))}
         </div>
         <div className="cart-total">
